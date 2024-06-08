@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Call to the CSS file, change the name to whatever you have it as -->
+</head>
+<body>
+    <div class="container">
+        <h1>Order Form <span><img src="https://tse1.mm.bing.net/th?id=OIP.Us1OsdH2yRMMqKqzq9LpfgHaCj&pid=Api&P=0&h=220" alt="Description of the image" class="item-image"></span></h1> <!-- Call to the header and the company logo -->
+        <input type="email" id="emails" placeholder="Enter email addresses separated by semicolon" required>
+        <input type="Kitbox" id="Kitbox" placeholder="Please enter Kit Box number" required>
+        <input type="text" id="search" placeholder="Search items" onkeyup="filterItems()">
+        <!-- The div under titled items is what we are using for the buttons, to add or subtract items just copy and paste each and replace all the names with what you want it to be -->
+        <div id="items">
+            <!--copy from here-->
+            <div class="item" data-name="copper cables">
+                <span>Copper Cables</span>
+                <button onclick="decrement('copper-cables')">-</button>
+                <input type="number" id="copper-cables" value="0" min="0" oninput="validateInput('copper-cables')">
+                <button onclick="increment('copper-cables')">+</button>
+            </div>
+            <!--to here-->
+            <div class="item" data-name="bolt">
+                <span>Bolt</span>
+                <button onclick="decrement('bolt')">-</button>
+                <input type="number" id="bolt" value="0" min="0" oninput="validateInput('bolt')">
+                <button onclick="increment('bolt')">+</button>
+            </div>
+            <div class="item" data-name="screws">
+                <span>Screws</span>
+                <button onclick="decrement('screws')">-</button>
+                <input type="number" id="screws" value="0" min="0" oninput="validateInput('screws')">
+                <button onclick="increment('screws')">+</button>
+            </div>
+            <!-- Add more items as needed -->
+        </div>
+
+        <button id="clear-button" onclick="clearAll()">Clear All</button>
+        <button id="complete-button" onclick="completeOrder()">Complete Order and Send Email</button>
+    </div>
+    
+    <script src="scripts.js"></script> <!-- Call to the JavaScript file, change the name to whatever you have -->
+</body>
+</html>
