@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Form</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Call to the CSS file, change the name to whatever you have it as -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Order Form <span><img src="https://tse1.mm.bing.net/th?id=OIP.Us1OsdH2yRMMqKqzq9LpfgHaCj&pid=Api&P=0&h=220" alt="Description of the image" class="item-image"></span></h1> <!-- Call to the header and the company logo -->
+        <h1>Order Form <span><img src="https://tse1.mm.bing.net/th?id=OIP.Us1OsdH2yRMMqKqzq9LpfgHaCj&pid=Api&P=0&h=220" alt="Description of the image" class="item-image"></span></h1>
         <input type="email" id="emails" placeholder="Enter email addresses separated by semicolon" required>
         <input type="Kitbox" id="Kitbox" placeholder="Please enter Kit Box number" required>
-        <select id="list-selector" onchange="changeList()"> <!-- Dropdown menu for selecting list -->
+        <select id="list-selector" onchange="changeList()">
             <option value="list1">List 1</option>
             <option value="list2">List 2</option>
             <!-- Add more lists as needed -->
         </select>
         <input type="text" id="search" placeholder="Search items" onkeyup="filterItems()">
         <div id="items">
-            <!-- Items will be populated here based on selected list -->
+            <!-- Items will be injected here based on the selected list -->
         </div>
         <button id="clear-button" onclick="clearAll()">Clear All</button>
         <button id="complete-button" onclick="completeOrder()">Complete Order and Send Email</button>
     </div>
     
-    <script src="scripts.js"></script> <!-- Call to the JavaScript file, change the name to whatever you have -->
+    <script src="scripts.js"></script>
 </body>
 </html>
