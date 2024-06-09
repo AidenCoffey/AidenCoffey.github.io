@@ -105,12 +105,10 @@ function completeOrder() {
         alert('Please select at least one item.');
         return;
     }
-
-    // Check if the work email is available
     let workEmail = null;
     for (let i = 0; i < emailList.length; i++) {
         if (emailList[i].endsWith(workEmailDomain)) {
-            workEmail = emailList.splice(i, 1)[0]; // Remove and get the work email
+            workEmail = emailList.splice(i, 1)[0]; 
             break;
         }
     }
@@ -124,6 +122,3 @@ function completeOrder() {
 
     window.location.href = mailtoLink;
 }
-
-
-
