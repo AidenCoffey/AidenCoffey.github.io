@@ -1,3 +1,46 @@
+const itemsList = {
+    list1: [
+        { name: 'Copper Cables', id: 'copper-cables' },
+        { name: 'Bolt', id: 'bolt' },
+        { name: 'Screws', id: 'screws' },
+        { name: 'PlayDates', id: 'play'}
+    ],
+    list2: [
+        { name: 'Nails', id: 'nails' },
+        { name: 'Washers', id: 'washers' },
+        { name: 'Nuts', id: 'nuts' },
+        { name: 'Mangos', id: 'mango'}
+    ]
+    // Add more lists as needed
+};
+
+function populateItems(list) {
+    const itemsDiv = document.getElementById('items');
+    itemsDiv.innerHTML = '';
+    list.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('item');
+        itemDiv.setAttribute('data-name', item.name.toLowerCase());
+        itemDiv.innerHTML = `
+            <span>${item.name}</span>
+            <button onclick="decrement('${item.id}')">-</button>
+            <input type="number" id="${item.id}" value="0" min="0" oninput="validateInput('${item.id}')">
+            <button onclick="increment('${item.id}')">+</button>
+        `;
+        itemsDiv.appendChild(itemDiv);
+    });
+}
+
+function changeList() {
+    const selectedList = document.getElementById('list-selector').value;
+    populateItems(itemsList[selectedList]);
+}
+
+// Call this to populate initial items when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    populateItems(itemsList.list1); 
+});
+
 function increment(id) { // Call for increasing the order count
     let element = document.getElementById(id); // Element calls the id of the element, so if screws then it will take screws and add it
     let value = parseInt(element.value); // Take the value (number of items needed) so when you send the email it knows how many you need
