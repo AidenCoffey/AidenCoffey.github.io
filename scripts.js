@@ -80,11 +80,14 @@ function clearAll() {
 function completeOrder() {
     const emails = document.getElementById('emails').value;
     const kitbox = document.getElementById('Kitbox').value;
+    const workEmailDomain = '@gunnarenergyservices.com'; 
 
     if (!emails || !kitbox) {
         alert('Please enter email addresses and Kit Box number.');
         return;
     }
+
+    const emailList = emails.split(';').map(email => email.trim()).filter(email => email);
 
     const items = document.querySelectorAll('#items .item');
     const order = [];
@@ -103,13 +106,24 @@ function completeOrder() {
         return;
     }
 
-    const emailList = emails.split(';').map(email => email.trim()).filter(email => email);
+    // Check if the work email is available
+    let workEmail = null;
+    for (let i = 0; i < emailList.length; i++) {
+        if (emailList[i].endsWith(workEmailDomain)) {
+            workEmail = emailList.splice(i, 1)[0]; // Remove and get the work email
+            break;
+        }
+    }
     const subject = `Order for Kit Box ${kitbox}`;
     const body = `Order Details:\n\n${order.map(item => `${item.item}: ${item.quantity}`).join('\n')}`;
 
-    emailList.forEach(email => {
-        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
+    const mailtoLink = `mailto:${emailList.join(',')}` +
+                       `?cc=${workEmail}` +
+                       `&subject=${encodeURIComponent(subject)}` +
+                       `&body=${encodeURIComponent(body)}`;
 
-    alert('Order email(s) sent successfully.');
+    window.location.href = mailtoLink;
 }
+
+
+
